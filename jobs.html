@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disheveled — Join Us</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= BASE ================= */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0b0c10;
+    color: #eee;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ================= NAV ================= */
+
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background: rgba(11,12,16,0.95);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    z-index: 100;
+}
+
+nav a {
+    margin: 0 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #ccc;
+    transition: 0.2s;
+}
+
+nav a:hover { color: #fff; }
+
+/* ================= PAGE HEADER ================= */
+
+.page-header {
+    padding: 140px 60px 20px 60px;
+}
+
+.page-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.page-header p {
+    color: #bbb;
+    margin-top: 10px;
+    max-width: 600px;
+}
+
+/* ================= JOB SECTION ================= */
+
+.section {
+    padding: 30px 60px;
+    max-width: 900px;
+}
+
+.section h2 {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.job-role {
+    background: rgba(255,255,255,0.05);
+    padding: 25px 30px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.job-role:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+.job-role h3 {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ================= EXPANDABLE DETAILS ================= */
+
+.job-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    background: rgba(255,255,255,0.03);
+    border-radius: 0 0 12px 12px;
+    padding: 0 30px;
+}
+
+.job-details.active {
+    max-height: 600px;
+    padding: 30px;
+}
+
+.job-details p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.contact-info {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-weight: 500;
+}
+
+.contact-info span {
+    color: #fff;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="jobs.html">Jobs</a>
+</nav>
+
+<div class="page-header">
+    <h1>Join Our Team</h1>
+    <p>
+        Disheveled is expanding. We are looking for collaborators who want to build
+        something ambitious, character-driven, and mechanically layered.
+    </p>
+</div>
+
+<div class="section">
+
+    <h2>Open Roles</h2>
+
+    <!-- Clickable Job -->
+    <div class="job-role" onclick="toggleJob()">
+        <h3>Unity / Godot Developer</h3>
+    </div>
+
+    <!-- Expandable Details -->
+    <div id="jobDetails" class="job-details">
+        <p>
+            We are looking for a systems-focused programmer to implement the following:
+        </p>
+
+        <p>
+            • Guild management systems<br>
+            • Visual novel engine structure<br>
+            • Auto-battler combat framework<br>
+        </p>
+
+        <p>
+            The ideal candidate understands gameplay architecture, scalable system design,
+            and writes clean, modular code. Revenue share is negotiable.
+        </p>
+
+        <p>
+            Send us a message with a brief introduction, what you hope to get from this collaboration,
+            and any relevant portfolio, GitHub, or past project links.
+            Feel free to ask questions, but be sure to share your portfolio or examples of your work upfront.
+        </p>
+
+        <div class="contact-info">
+            <strong>Discord:</strong> <span>hornydemondog</span><br>
+            <strong>Email:</strong> <span>numbergirl88@proton.me</span>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function toggleJob() {
+    const details = document.getElementById("jobDetails");
+    details.classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

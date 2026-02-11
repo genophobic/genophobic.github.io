@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disheveled</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= BASE ================= */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0b0c10;
+    color: #eee;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ================= NAV ================= */
+
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background: rgba(11,12,16,0.95);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    z-index: 100;
+}
+
+nav a {
+    margin: 0 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #ccc;
+    transition: 0.2s;
+}
+
+nav a:hover { color: #fff; }
+
+/* ================= HERO ================= */
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 60px 60px 60px;
+    position: relative;
+
+    /* Background image + fade in ONE declaration */
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(11,12,16,0.0) 35%,
+            rgba(11,12,16,0.6) 60%,
+            #0b0c10 85%
+        ),
+        url("./assets/adp47.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem;
+    margin: 0;
+    transform: translateY(-40px);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-top: 10px;
+    max-width: 700px;
+    color: #ddd;
+    transform: translateY(-40px);
+}
+
+/* Ad Bubble */
+
+.ad-bubble {    
+    position: absolute;
+    top: 170px;
+    right: 60px;
+
+    padding: 28px 48px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+
+    color: #fff;
+    border-radius: 12px;
+
+    transform: rotate(15deg);
+
+    /* Animated rainbow */
+    background: linear-gradient(
+        270deg,
+        #ff0000,
+        #ff9900,
+        #ffee00,
+        #33ff00,
+        #00ffee,
+        #0066ff,
+        #cc00ff,
+        #ff0000
+    );
+    background-size: 400% 400%;
+
+    animation: rainbowShift 6s linear infinite;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.6),
+        0 0 30px rgba(255,255,255,0.4);
+    transition: transform 0.2s ease;
+}
+
+.ad-bubble:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* Rainbow animation */
+@keyframes rainbowShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* ================= SECTIONS ================= */
+
+section {
+    margin: 90px 0;
+    padding: 0 60px;
+    max-width: 900px;
+}
+
+.hero + section {
+    margin-top: 30px;
+}
+    
+h2 {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+p {
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.team-member {
+    background: rgba(255,255,255,0.05);
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    padding: 60px;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="jobs.html">Jobs</a>
+</nav>
+
+<div class="hero">
+    <a href="jobs.html" class="ad-bubble">Looking for Developers!</a>
+    <h1 class="hero-title">DISHEVELED</h1>
+    <p class="hero-subtitle">
+        A fallen veteran. An empty guild hall. A second ascent through strategy, ambition, and ruin.
+    </p>
+</div>
+
+<section>
+    <h2>About</h2>
+    <p>
+        Disheveled is an adult video game about a seasoned adventurer who, after a decade of adventuring, finally makes it big — only to lose everything. Left alone, in debt and stuck with an empty guild hall, he decides to start over on his own terms. If he's going to risk his life adventuring again, he’ll at least do it surrounded by hot babes.
+    </p>
+</section>
+
+<section>
+    <h2>Development Status</h2>
+    <p>Demo in progress – estimated release around April - July.</p>
+</section>
+
+<section>
+    <h2>Team</h2>
+    <div class="team-member">nyorika7 – Art</div>
+    <div class="team-member">bambin0_0 – Music/SFX</div>
+    <div class="team-member">genophobic – Project Management</div>
+    <div class="team-member">genophobic – Narrative / Design</div>
+</section>
+
+<section>
+    <h2>Contact</h2>
+    <p>Discord: hornydemondog</p>
+    <p>Email: numbergirl88@proton.me</p>
+</section>
+
+<footer>
+    &copy; 2026 Disheveled Project. All rights reserved.
+</footer>
+
+</body>
+</html>

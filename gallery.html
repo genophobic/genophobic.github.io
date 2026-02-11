@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disheveled — Gallery</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= BASE ================= */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0b0c10;
+    color: #eee;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ================= NAV ================= */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background: rgba(11,12,16,0.95);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    z-index: 100;
+}
+
+nav a {
+    margin: 0 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #ccc;
+    transition: 0.2s;
+}
+
+nav a:hover { color: #fff; }
+
+/* ================= PAGE HEADER ================= */
+.page-header {
+    padding: 140px 60px 20px 60px;
+}
+
+.page-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.page-header p {
+    color: #bbb;
+    margin-top: 10px;
+    max-width: 600px;
+}
+
+/* ================= GALLERY GRID ================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+/* ================= IMAGE OVERLAY ================= */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(11,12,16,0.97);
+    display: none;
+    z-index: 200;
+
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Image fills screen properly */
+.overlay-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Image scales perfectly */
+.overlay-content img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+
+    border-radius: 10px;
+}
+
+/* Title + comment bottom-right */
+.overlay-text {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+
+    max-width: 400px;
+    text-align: right;
+}
+
+.overlay-text h3 {
+    margin: 0 0 8px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+}
+
+.overlay-text p {
+    margin: 0;
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Close button */
+.overlay-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="jobs.html">Jobs</a>
+</nav>
+
+<div class="page-header">
+    <h1>Gallery</h1>
+    <p>
+        A showcase of progress, iteration, and visual development. Click images to view details.
+    </p>
+</div>
+
+<div class="gallery-grid">
+    <!-- Gallery Item 1 -->
+    <div class="gallery-item" onclick="openOverlay(this)">
+        <img src="./assets/adp47.png" alt="">
+        <h3>Guild Hall — Lighting Pass</h3>
+        <p>Refining volumetric contrast and environmental storytelling.</p>
+    </div>
+
+    <!-- Gallery Item 2 -->
+    <div class="gallery-item" onclick="openOverlay(this)">
+        <img src="./assets/adp47.png" alt="">
+        <h3>Character Silhouette Iteration</h3>
+        <p>Testing costume layering and posture readability in scenes.</p>
+    </div>
+
+    <!-- Gallery Item 3 -->
+    <div class="gallery-item" onclick="openOverlay(this)">
+        <img src="./assets/adp47.png" alt="">
+        <h3>Combat UI Reduction</h3>
+        <p>Removing visual noise while preserving functional clarity.</p>
+    </div>
+</div>
+
+<!-- Overlay -->
+<div id="overlay" class="overlay" onclick="closeOverlay(event)">
+    <div class="overlay-content">
+        <span class="overlay-close" onclick="closeOverlay(event)">&times;</span>
+
+        <img id="overlayImage" src="" alt="">
+
+        <div class="overlay-text">
+            <h3 id="overlayTitle"></h3>
+            <p id="overlayComment"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+function openOverlay(item) {
+    const overlay = document.getElementById('overlay');
+    const img = item.querySelector('img').src;
+    const title = item.querySelector('h3').innerText;
+    const comment = item.querySelector('p').innerText;
+
+    document.getElementById('overlayImage').src = img;
+    document.getElementById('overlayTitle').innerText = title;
+    document.getElementById('overlayComment').innerText = comment;
+
+    overlay.classList.add('active');
+}
+
+function closeOverlay(e) {
+    // Prevent closing when clicking the content itself
+    if(e.target.classList.contains('overlay') || e.target.classList.contains('overlay-close')) {
+        document.getElementById('overlay').classList.remove('active');
+    }
+}
+</script>
+
+</body>
+</html>
