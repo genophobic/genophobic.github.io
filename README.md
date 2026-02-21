@@ -18,7 +18,7 @@ Demo in progress – estimated release around April - July.
 ## Team
 
 - nyorika7 – Art
-- Scarly – Music/SFX
+- bambin0_0 – Music/SFX
 - Genophobic – Project Management
 - Genophobic – Narrative / Design
 
